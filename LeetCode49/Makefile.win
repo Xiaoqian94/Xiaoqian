@@ -1,0 +1,31 @@
+# Project: Test49
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = main.o solution.o
+LINKOBJ  = main.o solution.o
+LIBS     = -L"A:/Dev-Cpp/MinGW32/lib" -static-libstdc++ -static-libgcc
+INCS     = -I"A:/Dev-Cpp/MinGW32/include"
+CXXINCS  = -I"A:/Dev-Cpp/MinGW32/include"
+BIN      = Test49.exe
+CXXFLAGS = $(CXXINCS) 
+CFLAGS   = $(INCS) 
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
+
+solution.o: solution.cpp
+	$(CPP) -c solution.cpp -o solution.o $(CXXFLAGS)
